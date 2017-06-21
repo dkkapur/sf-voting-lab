@@ -1,5 +1,12 @@
 ﻿// Write your Javascript code.
 
+
+$(document).ready(function () {
+    $("#refreshVote").click(function () {
+        $("#votes").load('@Url.Action("Index")');
+    });
+});
+
 /* This function calls the StatefulBackendController's HTTP GET method to get a collection of KeyValuePairs from the reliable dictionary in the StatefulBackendService */
 function getStatefulBackendServiceDictionary() {
     var http = new XMLHttpRequest();

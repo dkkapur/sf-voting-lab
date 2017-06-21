@@ -12,7 +12,7 @@ namespace VotingService.Controllers
     public class VotesController : Controller
     {
         // Holds the votes and counts. NOTE: THIS IS NOT THREAD SAFE FOR THE PURPOSES OF THE LAB.
-        static Dictionary<string, int> _counts = new Dictionary<string, int>();
+        static Dictionary<string, int> voteData = new Dictionary<string, int>();
         
         // GET: api/Votes
         [HttpGet]
@@ -23,29 +23,16 @@ namespace VotingService.Controllers
             //{
             //    votes.Add(kvp);
             //}
-            _counts.Add("Test", 4);
-            return Json(_counts);
+            voteData.Add("Test", 4);
+            return Json(voteData);
 
         }
-
-        // GET: api/Votes/5
-        [HttpGet("{id}", Name = "Get")]
-        public IActionResult Get(int id)
-        {
-            _counts.Add("Test2", 4);
-            return Json(_counts);
-        }
-        
-        // POST: api/Votes
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-        
+      
         // PUT: api/Votes/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
+            voteData.Add(value, id);
         }
         
         // DELETE: api/ApiWithActions/5
